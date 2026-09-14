@@ -16,8 +16,6 @@ print("SFace loaded successfully!")
 image1 = cv2.imread("ci.jpeg")
 
 
-#### Checking whether image1 is None or not
-
 if image1 is None:
     print("Image1 failed to load")
     exit()
@@ -47,7 +45,7 @@ if not cam.isOpened():
     exit()
 
 
-##### YuNet face detection model
+
 
 face_detect = cv2.FaceDetectorYN.create(
     "models/face_detection_yunet_2023mar.onnx",
@@ -83,16 +81,14 @@ if face1 is None or len(face1) == 0:
     exit()
 
 
-# Take first face if multiple faces are detected
+
 
 face1 = face1[0]
 
 print(f"The selected face1: {face1}")
 
 
-# =========================================================
-# CROP AND ALIGN IMAGE1
-# =========================================================
+
 
 face1 = face_reconize.alignCrop(
     image1,
@@ -110,9 +106,7 @@ feature1 = face_reconize.feature(face1)
 print("Feature1 extracted successfully!")
 
 
-# =========================================================
-# CAMERA LOOP
-# =========================================================
+
 
 while True:
 
@@ -222,9 +216,7 @@ while True:
         )
 
 
-    # =====================================================
-    # SHOW CAMERA
-    # =====================================================
+  
 
     cv2.imshow("New window", image2)
 
@@ -236,9 +228,6 @@ while True:
         break
 
 
-# =========================================================
-# RELEASE CAMERA
-# =========================================================
 
 cam.release()
 
